@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		fontSize: 34,
-		color: "#FFF",
+		color: "#FFFFFF",
 		fontFamily: FONTS.JostBlack
 	}
 });

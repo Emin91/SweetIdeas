@@ -14,7 +14,7 @@ export const HomeScreen = memo(() => {
 
 	const topActions = [
 		{ icon: <IdeasIcon />, onPress: () => navigation.navigate("SavedIdeas") },
-		{ icon: <GameIcon />, onPress: () => { } },
+		{ icon: <GameIcon />, onPress: () => navigation.navigate("Achievements") },
 		{ icon: <SettingsIcon />, onPress: () => navigation.navigate("Settings") }];
 
 	const gameTypes = [{ id: 1, title: "Friends" }, { id: 2, title: "Solo" }, { id: 3, title: "Partners" }];
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		fontSize: 26,
 		fontFamily: FONTS.JostBlack,
-		color: "#FFF"
+		color: "#FFFFFF"
 	},
 	gameTypes: {
 		gap: 6,
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
 		gap: 6
 	},
 	cardTitle: {
-		color: "#FFF",
+		color: "#FFFFFF",
 		fontSize: 30,
 		fontFamily: FONTS.JostBlack,
 		textAlign: "center"
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
 		backgroundColor: "#FF9DD8"
 	},
 	cardSubtitle: {
-		color: "#FFF",
+		color: "#FFFFFF",
 		fontSize: 22,
 		fontFamily: FONTS.JostSemiBold,
 		textAlign: "center"
@@ -195,7 +195,6 @@ const styles = StyleSheet.create({
 		color: "#FFFFFF",
 		fontSize: 28,
 		fontFamily: FONTS.JostBlack,
-		textAlign: "center"
 	},
 	quizContent: {
 		flexDirection: "row",

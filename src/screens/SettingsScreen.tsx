@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
 		backgroundColor: hexToRgba('#F7E9FF')
 	},
 	menuItemText: {
-		color: "#FFF",
+		color: "#FFFFFF",
 		fontSize: 26,
 		fontFamily: FONTS.JostBlack
 	},
