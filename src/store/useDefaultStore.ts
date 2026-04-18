@@ -9,6 +9,11 @@ type TDefaultStoreState = {
 	toggleIsNotificationEnabled: () => void;
 	toggleIsSoundsEnabled: () => void;
 	toggleIsMusicEnabled: () => void;
+
+	savedIdeas: any[];
+	addSavedIdea: (idea: any) => void;
+	removeSavedIdeaById: (id: number) => void;
+	clearSavedIdeas: () => void;
 };
 
 export const useDefaultStore = create<TDefaultStoreState>()(
@@ -17,9 +22,14 @@ export const useDefaultStore = create<TDefaultStoreState>()(
 			isNotificationEnabled: false,
 			isSoundsEnabled: true,
 			isMusicEnabled: true,
+			savedIdeas: [],
 			toggleIsNotificationEnabled: () => set(state => ({ isNotificationEnabled: !state.isNotificationEnabled })),
 			toggleIsSoundsEnabled: () => set(state => ({ isSoundsEnabled: !state.isSoundsEnabled })),
-			toggleIsMusicEnabled: () => set(state => ({ isMusicEnabled: !state.isMusicEnabled }))
+			toggleIsMusicEnabled: () => set(state => ({ isMusicEnabled: !state.isMusicEnabled })),
+
+			addSavedIdea: (idea: any) => set(state => ({ savedIdeas: [...state.savedIdeas, idea] })),
+			removeSavedIdeaById: (id: number) => set(state => ({ savedIdeas: state.savedIdeas.filter(idea => idea.id !== id) })),
+			clearSavedIdeas: () => set({ savedIdeas: [] })
 		}),
 		{
 			name: "default-store",
@@ -27,7 +37,8 @@ export const useDefaultStore = create<TDefaultStoreState>()(
 			partialize: state => ({
 				isNotificationEnabled: state.isNotificationEnabled,
 				isSoundsEnabled: state.isSoundsEnabled,
-				isMusicEnabled: state.isMusicEnabled
+				isMusicEnabled: state.isMusicEnabled,
+				savedIdeas: state.savedIdeas
 			})
 		}
 	)

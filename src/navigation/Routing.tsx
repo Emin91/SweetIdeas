@@ -4,6 +4,7 @@ import { enableScreens } from "react-native-screens";
 import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { WelcomeScreen } from "../screens/WelcomeScreen";
 import { HomeScreen } from "../screens/HomeScreen";
+import { SavedIdeasScreen } from "../screens/SavedIdeasScreen";
 import { SettingsScreen } from "../screens/SettingsScreen";
 
 enableScreens(true);
@@ -12,6 +13,7 @@ export type RootStackParamList = {
 	Welcome: undefined;
 	Home: undefined;
 	Settings: undefined;
+	SavedIdeas: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -33,6 +35,7 @@ export const Routing = () => {
 				<Stack.Screen name="Welcome" component={WelcomeScreen} />
 				<Stack.Screen name="Home" component={HomeScreen} />
 				<Stack.Screen name="Settings" component={SettingsScreen} />
+				<Stack.Screen name="SavedIdeas" component={SavedIdeasScreen} />
 				<Stack.Group screenOptions={transparentModalOptions}>
 					{/*<Stack.Screen name="ConfirmModal" component={ConfirmModalScreen} />*/}
 				</Stack.Group>

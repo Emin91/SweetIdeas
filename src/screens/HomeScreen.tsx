@@ -11,8 +11,14 @@ import { useNavigation } from "@react-navigation/native";
 
 export const HomeScreen = memo(() => {
 	const navigation = useNavigation<RootNavigation>();
-	const topActions = [{ icon: <IdeasIcon />, onPress: () => { } }, { icon: <GameIcon />, onPress: () => { } }, { icon: <SettingsIcon />, onPress: () => navigation.navigate("Settings") }];
+
+	const topActions = [
+		{ icon: <IdeasIcon />, onPress: () => navigation.navigate("SavedIdeas") },
+		{ icon: <GameIcon />, onPress: () => { } },
+		{ icon: <SettingsIcon />, onPress: () => navigation.navigate("Settings") }];
+
 	const gameTypes = [{ id: 1, title: "Friends" }, { id: 2, title: "Solo" }, { id: 3, title: "Partners" }];
+
 	const [selectedOption, setSelectedOption] = useState(gameTypes[0]);
 
 	return (
