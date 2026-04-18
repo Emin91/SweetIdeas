@@ -1,4 +1,4 @@
-export const hexToRgba = (hex: string, alpha: number = 1): string => {
+export const hexToRgba = (hex: string, alpha: number = 0.38): string => {
 	const cleanHex = hex.replace("#", "");
 
 	const fullHex =

@@ -5,7 +5,8 @@ export const IMAGES = {
 	w3: require("./w3.jpg"),
 	w4: require("./w4.jpg"),
 	w5: require("./w5.jpg"),
-	w6: require("./w6.jpg")
+	w6: require("./w6.jpg"),
+	dice: require("./dice.png")
 };
 
 export type ImageKeys = keyof typeof IMAGES;

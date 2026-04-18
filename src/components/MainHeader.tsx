@@ -2,7 +2,7 @@ import { FC } from "react";
 import { StyleSheet, Text, TextProps, TextStyle, TouchableOpacity, TouchableOpacityProps, View, ViewStyle } from "react-native";
 import { StyleProp } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { ArrowIcon } from "../assets/svg";
+import { ArrowV2Icon } from "../assets/svg";
 import { FONTS } from "../assets/fonts";
 
 interface IProps extends TouchableOpacityProps {
@@ -38,11 +38,11 @@ export const MainHeader: FC<IProps> = ({
 				onPress={onBack || (() => navigation.goBack())}
 				{...buttonProps}
 			>
-				{isBackShown && <ArrowIcon />}
+				{isBackShown && <ArrowV2Icon />}
 			</TouchableOpacity>
 			{title ? (
 				<View style={styles.titleContainer}>
-					<Text numberOfLines={1} style={[styles.title, textStyle]} {...textProps}>
+					<Text numberOfLines={2} style={[styles.title, textStyle]} {...textProps}>
 						{title}
 					</Text>
 				</View>
@@ -56,6 +56,7 @@ export const MainHeader: FC<IProps> = ({
 
 const styles = StyleSheet.create({
 	wrapper: {
+		gap: 10,
 		flexDirection: "row",
 		alignItems: "center"
 	},
@@ -71,10 +72,8 @@ const styles = StyleSheet.create({
 		alignItems: "center"
 	},
 	title: {
-		marginTop: 4,
 		fontSize: 28,
-		color: "#1F43D4",
-		textTransform: "uppercase",
-		fontFamily: FONTS.caesarDressing
+		color: "#FFFFFF",
+		fontFamily: FONTS.JostBlack
 	}
 });
