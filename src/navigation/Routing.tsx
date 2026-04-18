@@ -29,7 +29,7 @@ export const Routing = () => {
 			<Stack.Navigator initialRouteName={"Welcome"} screenOptions={{ headerShown: false }}>
 				<Stack.Screen name="Welcome" component={WelcomeScreen} />
 				<Stack.Group screenOptions={transparentModalOptions}>
-					<Stack.Screen name="ConfirmModal" component={ConfirmModalScreen} />
+					{/*<Stack.Screen name="ConfirmModal" component={ConfirmModalScreen} />*/}
 				</Stack.Group>
 			</Stack.Navigator>
 		</NavigationContainer>
