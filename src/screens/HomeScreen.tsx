@@ -9,6 +9,7 @@ import { MainButton } from "../components/MainButton";
 import { ImageKeys, IMAGES } from "../assets/images";
 import { RootNavigation } from "../navigation/Routing";
 import { ACTIVITIES_DATA } from "../data/activitiesData";
+import { useDefaultStore } from "../store/useDefaultStore";
 
 type GameType = {
 	id: number;
@@ -23,6 +24,7 @@ const TYPE_MAP: Record<GameType["title"], "friends" | "solo" | "partner"> = {
 
 export const HomeScreen = memo(() => {
 	const navigation = useNavigation<RootNavigation>();
+	const { toggleIdeas, isIdeaSaved } = useDefaultStore();
 
 	const topActions = [
 		{ icon: <IdeasIcon />, onPress: () => navigation.navigate("SavedIdeas") },
@@ -60,6 +62,11 @@ export const HomeScreen = memo(() => {
 
 	const activeActivity = filteredActivities[activityIndex] ?? null;
 
+	const isActiveIdeaSaved =
+		activeActivity != null
+			? isIdeaSaved(activeActivity.id, activeCategory.id)
+			: false;
+
 	const previousCategory = () => {
 		setCategoryIndex(prev => (prev - 1 + categoriesWithAll.length) % categoriesWithAll.length);
 	};
@@ -70,15 +77,28 @@ export const HomeScreen = memo(() => {
 
 	const shuffleActivity = () => {
 		if (!filteredActivities.length) return;
+
 		if (filteredActivities.length === 1) {
 			setActivityIndex(0);
 			return;
 		}
+
 		let randomIndex;
 		do {
 			randomIndex = Math.floor(Math.random() * filteredActivities.length);
 		} while (randomIndex === activityIndex);
+
 		setActivityIndex(randomIndex);
+	};
+
+	const handleToggleIdeas = () => {
+		if (!activeActivity) return;
+
+		toggleIdeas({
+			...activeActivity,
+			categoryId: activeCategory.id,
+			category: activeCategory.category
+		});
 	};
 
 	return (
@@ -90,16 +110,22 @@ export const HomeScreen = memo(() => {
 					</TouchableOpacity>
 				))}
 			</View>
+
 			<View style={styles.carousel}>
 				<TouchableOpacity style={styles.leftArrow} onPress={previousCategory}>
 					<ArrowIcon />
 				</TouchableOpacity>
+
 				<View style={styles.carouselContent}>
-					<Image source={activeCategory.category === "all" ? IMAGES.dice : IMAGES[`c${activeCategory.id}` as ImageKeys]} style={styles.carouselImage} />
+					<Image
+						source={activeCategory.category === "all" ? IMAGES.dice : IMAGES[`c${activeCategory.id}` as ImageKeys]}
+						style={styles.carouselImage}
+					/>
 					<Text numberOfLines={2} style={styles.carouselText}>
 						{activeCategory.category === "all" ? "All Categories" : activeCategory.category}
 					</Text>
 				</View>
+
 				<TouchableOpacity style={styles.rightArrow} onPress={nextCategory}>
 					<ArrowIcon />
 				</TouchableOpacity>
@@ -135,8 +161,8 @@ export const HomeScreen = memo(() => {
 				contentContainerStyle={styles.scrollContent}
 			>
 				<View style={styles.card}>
-					<TouchableOpacity style={styles.heartButton}>
-						<HeartIcon color="#C8B0F1" />
+					<TouchableOpacity disabled={!activeActivity?.title} style={[styles.heartButton, { opacity: activeActivity?.title ? 1 : 0 }]} onPress={handleToggleIdeas}>
+						<HeartIcon color={isActiveIdeaSaved ? "#FF6DC5" : "#C8B0F1"} />
 					</TouchableOpacity>
 					<View style={styles.cardContent}>
 						<Text style={styles.cardTitle}>
