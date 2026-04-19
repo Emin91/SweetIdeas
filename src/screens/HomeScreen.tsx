@@ -1,13 +1,25 @@
-import { memo, useState } from "react";
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { memo, useEffect, useMemo, useState } from "react";
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { ScreenBackground } from "../components/ScreenBackground";
 import { ArrowIcon, GameIcon, HeartIcon, IdeasIcon, PlayIcon, SettingsIcon } from "../assets/svg";
 import { hexToRgba } from "../utils/hexToRgba";
 import { FONTS } from "../assets/fonts";
 import { MainButton } from "../components/MainButton";
-import { IMAGES } from "../assets/images";
+import { ImageKeys, IMAGES } from "../assets/images";
 import { RootNavigation } from "../navigation/Routing";
-import { useNavigation } from "@react-navigation/native";
+import { ACTIVITIES_DATA } from "../data/activitiesData";
+
+type GameType = {
+	id: number;
+	title: "Friends" | "Solo" | "Partners";
+};
+
+const TYPE_MAP: Record<GameType["title"], "friends" | "solo" | "partner"> = {
+	Friends: "friends",
+	Solo: "solo",
+	Partners: "partner"
+};
 
 export const HomeScreen = memo(() => {
 	const navigation = useNavigation<RootNavigation>();
@@ -15,54 +27,141 @@ export const HomeScreen = memo(() => {
 	const topActions = [
 		{ icon: <IdeasIcon />, onPress: () => navigation.navigate("SavedIdeas") },
 		{ icon: <GameIcon />, onPress: () => navigation.navigate("Achievements") },
-		{ icon: <SettingsIcon />, onPress: () => navigation.navigate("Settings") }];
+		{ icon: <SettingsIcon />, onPress: () => navigation.navigate("Settings") }
+	];
 
-	const gameTypes = [{ id: 1, title: "Friends" }, { id: 2, title: "Solo" }, { id: 3, title: "Partners" }];
+	const gameTypes: GameType[] = [
+		{ id: 1, title: "Friends" },
+		{ id: 2, title: "Solo" },
+		{ id: 3, title: "Partners" }
+	];
 
-	const [selectedOption, setSelectedOption] = useState(gameTypes[0]);
+	const categoriesWithAll = useMemo(() => {
+		return [
+			{ id: "all", category: "all", items: ACTIVITIES_DATA.flatMap(category => category.items) },
+			...ACTIVITIES_DATA
+		];
+	}, []);
+
+	const [selectedOption, setSelectedOption] = useState<GameType>(gameTypes[0]);
+	const [categoryIndex, setCategoryIndex] = useState(0);
+	const [activityIndex, setActivityIndex] = useState(0);
+
+	const activeCategory = categoriesWithAll[categoryIndex];
+	const selectedType = TYPE_MAP[selectedOption.title];
+
+	const filteredActivities = useMemo(() => {
+		return activeCategory.items.filter(item => item.type.includes(selectedType));
+	}, [activeCategory, selectedType]);
+
+	useEffect(() => {
+		setActivityIndex(0);
+	}, [categoryIndex, selectedOption]);
+
+	const activeActivity = filteredActivities[activityIndex] ?? null;
+
+	const previousCategory = () => {
+		setCategoryIndex(prev => (prev - 1 + categoriesWithAll.length) % categoriesWithAll.length);
+	};
+
+	const nextCategory = () => {
+		setCategoryIndex(prev => (prev + 1) % categoriesWithAll.length);
+	};
+
+	const shuffleActivity = () => {
+		if (!filteredActivities.length) return;
+		if (filteredActivities.length === 1) {
+			setActivityIndex(0);
+			return;
+		}
+		let randomIndex;
+		do {
+			randomIndex = Math.floor(Math.random() * filteredActivities.length);
+		} while (randomIndex === activityIndex);
+		setActivityIndex(randomIndex);
+	};
 
 	return (
 		<ScreenBackground style={styles.container} edges={["top"]}>
 			<View style={styles.topActions}>
 				{topActions.map((action, index) => (
-					<TouchableOpacity key={index} style={styles.topActionItem} onPress={action.onPress}>
+					<TouchableOpacity key={index} onPress={action.onPress}>
 						<Text>{action.icon}</Text>
 					</TouchableOpacity>
 				))}
 			</View>
 			<View style={styles.carousel}>
-				<TouchableOpacity style={styles.leftArrow}>
+				<TouchableOpacity style={styles.leftArrow} onPress={previousCategory}>
 					<ArrowIcon />
 				</TouchableOpacity>
-				<Text numberOfLines={2} style={styles.carouselText}>All categories</Text>
-				<TouchableOpacity style={styles.rightArrow}>
+				<View style={styles.carouselContent}>
+					<Image source={activeCategory.category === "all" ? IMAGES.dice : IMAGES[`c${activeCategory.id}` as ImageKeys]} style={styles.carouselImage} />
+					<Text numberOfLines={2} style={styles.carouselText}>
+						{activeCategory.category === "all" ? "All Categories" : activeCategory.category}
+					</Text>
+				</View>
+				<TouchableOpacity style={styles.rightArrow} onPress={nextCategory}>
 					<ArrowIcon />
 				</TouchableOpacity>
 			</View>
 			<View style={styles.gameTypes}>
-				{gameTypes.map((gameType, index) => (
-					<TouchableOpacity key={index} onPress={() => setSelectedOption(gameType)} style={[styles.gameTypeButton, selectedOption.id === gameType.id ? styles.gameTypeButtonActive : styles.gameTypeButtonInactive]}>
-						<Text style={[styles.gameTypeText, selectedOption.id === gameType.id ? styles.gameTypeTextActive : styles.gameTypeTextInactive]}>{gameType.title}</Text>
+				{gameTypes.map(gameType => (
+					<TouchableOpacity
+						key={gameType.id}
+						onPress={() => setSelectedOption(gameType)}
+						style={[
+							styles.gameTypeButton,
+							selectedOption.id === gameType.id
+								? styles.gameTypeButtonActive
+								: styles.gameTypeButtonInactive
+						]}
+					>
+						<Text
+							style={[
+								styles.gameTypeText,
+								selectedOption.id === gameType.id
+									? styles.gameTypeTextActive
+									: styles.gameTypeTextInactive
+							]}
+						>
+							{gameType.title}
+						</Text>
 					</TouchableOpacity>
 				))}
 			</View>
-			<ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView} contentContainerStyle={styles.scrollContent}>
+			<ScrollView
+				showsVerticalScrollIndicator={false}
+				style={styles.scrollView}
+				contentContainerStyle={styles.scrollContent}
+			>
 				<View style={styles.card}>
 					<TouchableOpacity style={styles.heartButton}>
 						<HeartIcon color="#C8B0F1" />
 					</TouchableOpacity>
 					<View style={styles.cardContent}>
-						<Text style={styles.cardTitle}>Cook Without Recipe</Text>
+						<Text style={styles.cardTitle}>
+							{activeActivity?.title ?? "No ideas found"}
+						</Text>
 						<View style={styles.cardDivider} />
-						<Text style={styles.cardSubtitle}>Make a dish using only what you have.</Text>
+						<Text style={styles.cardSubtitle}>
+							{activeActivity?.description ??
+								`There are no activities in "${activeCategory.category}" for ${selectedOption.title.toLowerCase()} right now.`}
+						</Text>
 					</View>
 				</View>
-				<MainButton title="Shuffle!" icon={IMAGES.dice} />
+				<MainButton
+					title="Shuffle!"
+					icon={IMAGES.dice}
+					onPress={shuffleActivity}
+					disabled={!activeActivity}
+				/>
 				<View style={styles.quizCard}>
 					<Text style={styles.quizTitle}>Find Your Perfect Pick</Text>
 					<View style={styles.quizContent}>
-						<Text style={styles.quizText}>Answer a few simple questions and we’ll match you with the right idea.</Text>
-						<TouchableOpacity>
+						<Text style={styles.quizText}>
+							Answer a few simple questions and we’ll match you with the right idea.
+						</Text>
+						<TouchableOpacity onPress={() => navigation.navigate("Quiz")}>
 							<PlayIcon />
 						</TouchableOpacity>
 					</View>
@@ -83,7 +182,6 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "flex-end"
 	},
-	topActionItem: {},
 	carousel: {
 		height: 80,
 		marginTop: 22,
@@ -92,6 +190,10 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 		backgroundColor: hexToRgba("#EDFAFF")
+	},
+	carouselImage: {
+		width: 40,
+		height: 40
 	},
 	leftArrow: {
 		width: 30,
@@ -106,13 +208,21 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center"
 	},
-	carouselText: {
+	carouselContent: {
 		flex: 1,
-		flexShrink: 1,
+		gap: 10,
+		paddingHorizontal: 6,
+		alignItems: "center",
+		justifyContent: "center",
+		flexDirection: "row"
+	},
+	carouselText: {
 		textAlign: "center",
 		fontSize: 26,
 		fontFamily: FONTS.JostBlack,
-		color: "#FFFFFF"
+		color: "#FFFFFF",
+		flexShrink: 1,
+		textTransform: "capitalize"
 	},
 	gameTypes: {
 		gap: 6,
@@ -194,7 +304,7 @@ const styles = StyleSheet.create({
 	quizTitle: {
 		color: "#FFFFFF",
 		fontSize: 28,
-		fontFamily: FONTS.JostBlack,
+		fontFamily: FONTS.JostBlack
 	},
 	quizContent: {
 		flexDirection: "row",

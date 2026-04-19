@@ -15,6 +15,14 @@ export const IMAGES = {
 	a7: require("./a7.png"),
 	a8: require("./a8.png"),
 	a9: require("./a9.png"),
+	c1: require("./c1.png"),
+	c2: require("./c2.png"),
+	c3: require("./c3.png"),
+	c4: require("./c4.png"),
+	c5: require("./c5.png"),
+	c6: require("./c6.png"),
+	c7: require("./c7.png"),
+	c8: require("./c8.png"),
 	dice: require("./dice.png")
 };
 

@@ -74,12 +74,12 @@ const styles = StyleSheet.create({
 		flexShrink: 1,
 		fontSize: 20,
 		fontFamily: FONTS.JostBlack,
-		color: '#FFF',
+		color: "#FFFFFF",
 	},
 	info: {
 		flexShrink: 1,
 		fontSize: 16,
 		fontFamily: FONTS.JostSemiBold,
-		color: '#FFF',
+		color: "#FFFFFF",
 	},
 });

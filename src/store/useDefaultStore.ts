@@ -3,6 +3,14 @@ import { createJSONStorage, persist } from "zustand/middleware";
 import { mmkvStorage } from "../services/MmkvAdapter";
 import { ACHIEVEMENTS_DATA } from "../data/achievements";
 
+type TAchievement = (typeof ACHIEVEMENTS_DATA)[number];
+
+type TSavedIdea = {
+	id: number;
+	title: string;
+	info: string;
+};
+
 type TDefaultStoreState = {
 	isNotificationEnabled: boolean;
 	isSoundsEnabled: boolean;
@@ -11,19 +19,19 @@ type TDefaultStoreState = {
 	toggleIsSoundsEnabled: () => void;
 	toggleIsMusicEnabled: () => void;
 
-	savedIdeas: any[];
-	addSavedIdea: (idea: any) => void;
+	savedIdeas: TSavedIdea[];
+	addSavedIdea: (idea: TSavedIdea) => void;
 	removeSavedIdeaById: (id: number) => void;
 	clearSavedIdeas: () => void;
 
-	achievements: any[];
+	achievements: TAchievement[];
 	unlockAchievementById: (id: number) => void;
 	isAchievementUnlocked: (id: number) => boolean;
 };
 
 export const useDefaultStore = create<TDefaultStoreState>()(
-	persist(
-		set => ({
+	persist<TDefaultStoreState, [], [], Partial<TDefaultStoreState>>(
+		(set, get) => ({
 			isNotificationEnabled: false,
 			isSoundsEnabled: true,
 			isMusicEnabled: true,
@@ -32,24 +40,24 @@ export const useDefaultStore = create<TDefaultStoreState>()(
 			toggleIsMusicEnabled: () => set(state => ({ isMusicEnabled: !state.isMusicEnabled })),
 
 			savedIdeas: [],
-			addSavedIdea: (idea: any) => set(state => ({ savedIdeas: [...state.savedIdeas, idea] })),
+			addSavedIdea: (idea: TSavedIdea) => set(state => ({ savedIdeas: [...state.savedIdeas, idea] })),
 			removeSavedIdeaById: (id: number) => set(state => ({ savedIdeas: state.savedIdeas.filter(idea => idea.id !== id) })),
 			clearSavedIdeas: () => set({ savedIdeas: [] }),
 
 			achievements: ACHIEVEMENTS_DATA,
-			isAchievementUnlocked: (id: number) => {
-				const achievement = useDefaultStore.getState().achievements.find(achievement => achievement.id === id);
-				return achievement?.isUnlocked || false;
-			},
 			unlockAchievementById: (id: number) =>
 				set(state => ({
-					achievements: state.achievements.map(achievement => (achievement.id === id ? { ...achievement, isUnlocked: true } : achievement))
-				}))
+					achievements: state.achievements.map(item => (item.id === id ? { ...item, isUnlocked: true } : item))
+				})),
+			isAchievementUnlocked: (id: number) => {
+				const achievement = get().achievements.find(item => item.id === id);
+				return achievement?.isUnlocked || false;
+			}
 		}),
 		{
 			name: "default-store",
 			storage: createJSONStorage(() => mmkvStorage),
-			partialize: state => ({
+			partialize: (state): Partial<TDefaultStoreState> => ({
 				isNotificationEnabled: state.isNotificationEnabled,
 				isSoundsEnabled: state.isSoundsEnabled,
 				isMusicEnabled: state.isMusicEnabled,

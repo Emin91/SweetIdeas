@@ -6,8 +6,11 @@ import { hexToRgba } from "../utils/hexToRgba";
 import { useDefaultStore } from "../store/useDefaultStore";
 import { MainButton } from "../components/MainButton";
 import { FONTS } from "../assets/fonts";
+import { RootNavigation } from "../navigation/Routing";
+import { useNavigation } from "@react-navigation/native";
 
 export const SettingsScreen = memo(() => {
+	const navigation = useNavigation<RootNavigation>();
 	const isNotificationEnabled = useDefaultStore(state => state.isNotificationEnabled);
 	const isSoundsEnabled = useDefaultStore(state => state.isSoundsEnabled);
 	const isMusicEnabled = useDefaultStore(state => state.isMusicEnabled);
@@ -44,14 +47,14 @@ export const SettingsScreen = memo(() => {
 					<TouchableOpacity onPress={item.onPress} activeOpacity={1} key={index} style={styles.menuItem}>
 						<Text style={styles.menuItemText}>{item.title}</Text>
 						<View style={styles.switchContainer}>
-							<Switch onValueChange={item.onPress} value={item.value} thumbColor={'#FFF'} trackColor={{ false: '#ccc', true: '#A893FD' }} />
+							<Switch onValueChange={item.onPress} value={item.value} thumbColor={"#FFFFFF"} trackColor={{ false: '#ccc', true: '#A893FD' }} />
 						</View>
 					</TouchableOpacity>
 				))}
 			</View>
 			<View style={styles.buttonContainer}>
 				<MainButton title="Clear Cache" buttonStyle={styles.clearCacheButton} />
-				<MainButton title="Privacy Policy" />
+				<MainButton title="Privacy Policy" onPress={() => navigation.navigate("Privacy")} />
 			</View>
 		</ScreenBackground>
 	);
