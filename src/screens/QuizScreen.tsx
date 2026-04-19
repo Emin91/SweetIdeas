@@ -7,16 +7,20 @@ import { FONTS } from "../assets/fonts";
 import { MainButton } from "../components/MainButton";
 import { RootNavigation } from "../navigation/Routing";
 import { QUIZ_LIST } from "../data/quizList";
+import { ACTIVITIES_DATA } from "../data/activitiesData";
 import { hexToRgba } from "../utils/hexToRgba";
+import { useDefaultStore } from "../store/useDefaultStore";
 
 export const QuizScreen = memo(() => {
 	const navigation = useNavigation<RootNavigation>();
+	const registerQuizCompleted = useDefaultStore(state => state.registerQuizCompleted);
 	const [quizListIndex] = useState(0);
 	const quizListKey = `list_${quizListIndex + 1}` as keyof typeof QUIZ_LIST;
 	const questions = QUIZ_LIST[quizListKey] ?? QUIZ_LIST.list_1;
 	const [shuffledQuestions, setShuffledQuestions] = useState(questions);
 	const [questionIndex, setQuestionIndex] = useState(0);
 	const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+	const [answersByQuestionId, setAnswersByQuestionId] = useState<Record<number, number | null>>({});
 
 	const activeQuestion = shuffledQuestions[questionIndex];
 	const isLastQuestion = questionIndex === shuffledQuestions.length - 1;
@@ -34,13 +38,105 @@ export const QuizScreen = memo(() => {
 	const onSelectAnswer = (index: number) => {
 		if (selectedIndex !== null) return;
 		setSelectedIndex(index);
+		setAnswersByQuestionId(prev => ({ ...prev, [activeQuestion.id]: index }));
 	};
+
+	const onFinish = () => {
+		registerQuizCompleted();
+		const companyIndex = answersByQuestionId[2] ?? null;
+		const selectedType = companyIndex === 1 ? "friends" : companyIndex === 2 ? "partner" : "solo";
+
+		const interestIndex = answersByQuestionId[4] ?? null;
+		const moodIndex = answersByQuestionId[1] ?? null;
+
+		const categoryFromInterest =
+			interestIndex === 0
+				? "activity"
+				: interestIndex === 1
+					? "entertainment"
+					: interestIndex === 2
+						? "creativity"
+						: interestIndex === 3
+							? "social"
+							: interestIndex === 4
+								? "random"
+								: interestIndex === 5
+									? "food"
+									: null;
+
+		const categoryFromMood =
+			moodIndex === 0
+				? "selfTime"
+				: moodIndex === 1
+					? "activity"
+					: moodIndex === 2
+						? "creativity"
+						: moodIndex === 3
+							? "random"
+							: moodIndex === 4
+								? "learning"
+								: moodIndex === 5
+									? "entertainment"
+									: null;
+
+		const preferredCategory = categoryFromInterest ?? categoryFromMood;
+
+		const pickRandom = <T,>(items: T[]): T | null => {
+			if (items.length === 0) return null;
+			return items[Math.floor(Math.random() * items.length)] ?? null;
+		};
+
+		const pickFromCategory = () => {
+			if (!preferredCategory) return null;
+			const category = ACTIVITIES_DATA.find(item => item.category === preferredCategory);
+			if (!category) return null;
+			const activities = category.items.filter(item => item.type.includes(selectedType));
+			const activity = pickRandom(activities);
+			if (!activity) return null;
+			return { category, activity };
+		};
+
+		const pickFromAnyCategoryByType = () => {
+			const categories = [...ACTIVITIES_DATA].sort(() => Math.random() - 0.5);
+			for (const category of categories) {
+				const activities = category.items.filter(item => item.type.includes(selectedType));
+				const activity = pickRandom(activities);
+				if (!activity) continue;
+				return { category, activity };
+			}
+			return null;
+		};
+
+		const pickAny = () => {
+			const category = pickRandom(ACTIVITIES_DATA);
+			if (!category) return null;
+			const activity = pickRandom(category.items);
+			if (!activity) return null;
+			return { category, activity };
+		};
+
+		const pick = pickFromCategory() ?? pickFromAnyCategoryByType() ?? pickAny();
+		if (!pick) return;
+
+		navigation.navigate("QuizResult", {
+			activity: {
+				id: pick.activity.id,
+				title: pick.activity.title,
+				description: pick.activity.description,
+				type: pick.activity.type
+			},
+			category: {
+				id: pick.category.id,
+				category: pick.category.category
+			}
+		});
+	}
 
 	const onContinue = () => {
 		if (isAnswerSelected) return;
 
 		if (isLastQuestion) {
-			navigation.navigate("QuizResult");
+			onFinish()
 			return;
 		}
 
@@ -57,6 +153,7 @@ export const QuizScreen = memo(() => {
 		);
 		setQuestionIndex(0);
 		setSelectedIndex(null);
+		setAnswersByQuestionId({});
 	}, [questions, quizListIndex]);
 
 	if (!activeQuestion) return null;

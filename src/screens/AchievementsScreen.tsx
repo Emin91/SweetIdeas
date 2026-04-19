@@ -22,7 +22,7 @@ export const AchievementsScreen = memo(() => {
 				<View style={styles.imageRow}>
 					{achievements.map(item => (
 						<View key={item.id} style={styles.imageContainer}>
-							<Image resizeMode="contain" source={IMAGES[`a${item.id}` as ImageKeys]} style={styles.image} />
+							<Image resizeMode="contain" source={item.isUnlocked ? IMAGES[`a${item.id}` as ImageKeys] : IMAGES.lock} style={styles.image} />
 						</View>
 					))}
 				</View>

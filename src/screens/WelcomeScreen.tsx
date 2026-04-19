@@ -6,10 +6,12 @@ import { useNavigation } from "@react-navigation/native";
 import { MainButton } from "../components/MainButton";
 import { ImageKeys } from "../assets/images";
 import { FONTS } from "../assets/fonts";
+import { useDefaultStore } from "../store/useDefaultStore";
 
 export const WelcomeScreen = memo(() => {
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const navigation = useNavigation<RootNavigation>();
+	const setIsDisclaimerShowed = useDefaultStore(state => state.setIsDisclaimerShowed)
 
 	const data = [
 		{
@@ -55,6 +57,7 @@ export const WelcomeScreen = memo(() => {
 
 	const onNext = () => {
 		if (isLastSlide) {
+			setIsDisclaimerShowed(true)
 			navigation.navigate("Home")
 			return;
 		}

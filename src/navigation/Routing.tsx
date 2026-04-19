@@ -10,6 +10,7 @@ import { AchievementsScreen } from "../screens/AchievementsScreen";
 import { QuizScreen } from "../screens/QuizScreen";
 import { QuizResultScreen } from "../screens/QuizResultScreen";
 import { PrivacyScreen } from "../screens/PrivacyScreen";
+import { useDefaultStore } from "../store/useDefaultStore";
 
 enableScreens(true);
 
@@ -20,7 +21,18 @@ export type RootStackParamList = {
 	SavedIdeas: undefined;
 	Achievements: undefined;
 	Quiz: undefined;
-	QuizResult: undefined;
+	QuizResult: {
+		activity: {
+			id: number;
+			title: string;
+			description: string;
+			type: string[];
+		};
+		category: {
+			id: number;
+			category: string;
+		};
+	};
 	Privacy: undefined
 };
 
@@ -30,16 +42,12 @@ export type RootNavigation = NativeStackNavigationProp<RootStackParamList>;
 
 export const navigationRef = createNavigationContainerRef<RootStackParamList>();
 
-const transparentModalOptions = {
-	presentation: "transparentModal" as const,
-	animation: "fade" as const,
-	contentStyle: { backgroundColor: "transparent" }
-};
-
 export const Routing = () => {
+	const isDisclaimerShowed = useDefaultStore(state => state.isDisclaimerShowed)
+
 	return (
 		<NavigationContainer ref={navigationRef}>
-			<Stack.Navigator initialRouteName={"Welcome"} screenOptions={{ headerShown: false }}>
+			<Stack.Navigator initialRouteName={isDisclaimerShowed ? "Home" : "Welcome"} screenOptions={{ headerShown: false }}>
 				<Stack.Screen name="Welcome" component={WelcomeScreen} />
 				<Stack.Screen name="Home" component={HomeScreen} />
 				<Stack.Screen name="Settings" component={SettingsScreen} />
@@ -48,9 +56,6 @@ export const Routing = () => {
 				<Stack.Screen name="Quiz" component={QuizScreen} />
 				<Stack.Screen name="QuizResult" component={QuizResultScreen} />
 				<Stack.Screen name="Privacy" component={PrivacyScreen} />
-				<Stack.Group screenOptions={transparentModalOptions}>
-					{/*<Stack.Screen name="ConfirmModal" component={ConfirmModalScreen} />*/}
-				</Stack.Group>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

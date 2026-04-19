@@ -23,7 +23,8 @@ export const IMAGES = {
 	c6: require("./c6.png"),
 	c7: require("./c7.png"),
 	c8: require("./c8.png"),
-	dice: require("./dice.png")
+	dice: require("./dice.png"),
+	lock: require("./lock.png")
 };
 
 export type ImageKeys = keyof typeof IMAGES;

@@ -24,7 +24,7 @@ const TYPE_MAP: Record<GameType["title"], "friends" | "solo" | "partner"> = {
 
 export const HomeScreen = memo(() => {
 	const navigation = useNavigation<RootNavigation>();
-	const { toggleIdeas, isIdeaSaved } = useDefaultStore();
+	const { toggleIdeas, isIdeaSaved, registerRandomUsed, registerIdeaGenerated } = useDefaultStore();
 
 	const topActions = [
 		{ icon: <IdeasIcon />, onPress: () => navigation.navigate("SavedIdeas") },
@@ -121,6 +121,8 @@ export const HomeScreen = memo(() => {
 		if (nextCategoryIndex === -1) return;
 
 		skipNextActivityResetRef.current = true;
+		registerRandomUsed();
+		registerIdeaGenerated(nextPick.categoryId);
 		setSelectedOption(nextPick.gameType);
 		setCategoryIndex(nextCategoryIndex);
 		setActivityIndex(nextPick.activityIndex);
