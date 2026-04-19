@@ -1,4 +1,4 @@
-import { memo, useEffect, useMemo, useState } from "react";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { ScreenBackground } from "../components/ScreenBackground";
@@ -48,6 +48,7 @@ export const HomeScreen = memo(() => {
 	const [selectedOption, setSelectedOption] = useState<GameType>(gameTypes[0]);
 	const [categoryIndex, setCategoryIndex] = useState(0);
 	const [activityIndex, setActivityIndex] = useState(0);
+	const skipNextActivityResetRef = useRef(false);
 
 	const activeCategory = categoriesWithAll[categoryIndex];
 	const selectedType = TYPE_MAP[selectedOption.title];
@@ -57,6 +58,10 @@ export const HomeScreen = memo(() => {
 	}, [activeCategory, selectedType]);
 
 	useEffect(() => {
+		if (skipNextActivityResetRef.current) {
+			skipNextActivityResetRef.current = false;
+			return;
+		}
 		setActivityIndex(0);
 	}, [categoryIndex, selectedOption]);
 
@@ -76,19 +81,49 @@ export const HomeScreen = memo(() => {
 	};
 
 	const shuffleActivity = () => {
-		if (!filteredActivities.length) return;
+		type TPick = {
+			categoryId: number;
+			activityIndex: number;
+			gameType: GameType;
+		};
 
-		if (filteredActivities.length === 1) {
-			setActivityIndex(0);
-			return;
+		const buildPick = (gameType: GameType): Omit<TPick, "gameType"> | null => {
+			const nextType = TYPE_MAP[gameType.title];
+			const shuffledCategories = [...ACTIVITIES_DATA].sort(() => Math.random() - 0.5);
+
+			for (const category of shuffledCategories) {
+				const activitiesForType = category.items.filter(item => item.type.includes(nextType));
+				if (activitiesForType.length === 0) continue;
+
+				return {
+					categoryId: category.id,
+					activityIndex: Math.floor(Math.random() * activitiesForType.length)
+				};
+			}
+
+			return null;
+		};
+
+		const shuffledGameTypes = [...gameTypes].sort(() => Math.random() - 0.5);
+		let nextPick: TPick | null = null;
+
+		for (const gameType of shuffledGameTypes) {
+			const pickForType = buildPick(gameType);
+			if (!pickForType) continue;
+
+			nextPick = { ...pickForType, gameType };
+			break;
 		}
 
-		let randomIndex;
-		do {
-			randomIndex = Math.floor(Math.random() * filteredActivities.length);
-		} while (randomIndex === activityIndex);
+		if (!nextPick) return;
 
-		setActivityIndex(randomIndex);
+		const nextCategoryIndex = categoriesWithAll.findIndex(category => category.id === nextPick.categoryId);
+		if (nextCategoryIndex === -1) return;
+
+		skipNextActivityResetRef.current = true;
+		setSelectedOption(nextPick.gameType);
+		setCategoryIndex(nextCategoryIndex);
+		setActivityIndex(nextPick.activityIndex);
 	};
 
 	const handleToggleIdeas = () => {
