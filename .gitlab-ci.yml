@@ -8,4 +8,4 @@ stages:
   - Build And Archive
 
 variables:
-  IOS_SCHEME: SweetIdeas
+  IOS_SCHEME: SatiSvveetIdeas
