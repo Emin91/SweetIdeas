@@ -1,0 +1,11 @@
+include:
+  - component: $CI_SERVER_FQDN/infra/cicd-components/mobile_ios_fastlane@v0.1-ios
+    inputs:
+      ios_ci_source_ref: v0.1
+
+stages:
+  - Codesign Admin
+  - Build And Archive
+
+variables:
+  IOS_SCHEME: SweetIdeas

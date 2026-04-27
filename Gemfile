@@ -14,3 +14,6 @@ gem 'bigdecimal'
 gem 'logger'
 gem 'benchmark'
 gem 'mutex_m'
+
+gem 'fastlane', '~> 2.230.0'
+gem 'xcpretty', '~> 0.4.0'
