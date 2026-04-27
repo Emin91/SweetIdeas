@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0354053AE7F142CAA9E4E9E9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4725E9D0B71E40638FFA887E /* Colors.xcassets */; };
 		05AA3EF25BA144F6BD7D455F /* Jost-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F991473C2DEF4767B0E0C540 /* Jost-ExtraBoldItalic.ttf */; };
 		0835F871E90A4CE5AC0F2327 /* Jost-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 870B1083CF1B43C2A8D91781 /* Jost-SemiBold.ttf */; };
-		0C80B921A6F3F58F76C31292 /* libPods-SweetIdeas.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-SweetIdeas.a */; };
+		0C80B921A6F3F58F76C31292 /* libPods-SatiSvveetIdeas.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-SatiSvveetIdeas.a */; };
 		11103615416A448D9CC5B94F /* Jost-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A344DCEC093A4B6CB1F239E1 /* Jost-Bold.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		1A4E57C27CBE4246A3F27F01 /* Jost-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0710C88504763872C2A5E /* Jost-MediumItalic.ttf */; };
 		29308FC3F9304960BAB16342 /* Jost-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 024883C9BE1C4BB3B3842EC1 /* Jost-SemiBoldItalic.ttf */; };
 		2E921C8A46A34EE5A42E0B64 /* Jost-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4CCC894645D41A8AFBC2199 /* Jost-Thin.ttf */; };
 		3A51A5F0824348B2BC4A4BAB /* Jost-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8C6FA98CA8C42C4A950D14B /* Jost-Italic.ttf */; };
+		4AD68B81D992407F8B2B3E5A /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5B7A7FED91A4AEC9286F189 /* BootSplash.storyboard */; };
 		5609E20B17E644C7A141B129 /* Jost-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEB49C9CDA8C4B76B1A63277 /* Jost-Light.ttf */; };
 		588E86BC753041AA820720C2 /* index.ts in Resources */ = {isa = PBXBuildFile; fileRef = 6FEF3569A98C42168B27B82E /* index.ts */; };
 		6E0667B04DD1DDB183FC4602 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
@@ -31,31 +33,30 @@
 		BE20F4FBF7B3443AB7F02E3A /* Jost-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18F9A491A1FC4C2A8EC51F23 /* Jost-LightItalic.ttf */; };
 		BF4633C02D4C477FA8835405 /* Jost-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D4C44D6EF6F49A5A3780A49 /* Jost-BoldItalic.ttf */; };
 		C1E98EC548B1499DBDA9A45D /* Jost-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49E8055A5E374705866A0C77 /* Jost-ExtraLightItalic.ttf */; };
-		4AD68B81D992407F8B2B3E5A /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5B7A7FED91A4AEC9286F189 /* BootSplash.storyboard */; };
-		0354053AE7F142CAA9E4E9E9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4725E9D0B71E40638FFA887E /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		024883C9BE1C4BB3B3842EC1 /* Jost-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-SemiBoldItalic.ttf"; path = "../src/assets/fonts/Jost-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* SweetIdeas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweetIdeas.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SweetIdeas/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SweetIdeas/Info.plist; sourceTree = "<group>"; };
-		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = SweetIdeas/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* SatiSvveetIdeas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SatiSvveetIdeas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SatiSvveetIdeas/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SatiSvveetIdeas/Info.plist; sourceTree = "<group>"; };
+		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = SatiSvveetIdeas/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		18F9A491A1FC4C2A8EC51F23 /* Jost-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-LightItalic.ttf"; path = "../src/assets/fonts/Jost-LightItalic.ttf"; sourceTree = "<group>"; };
 		19EF51D0B4A94FCEB8DCAFAC /* Jost-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-Regular.ttf"; path = "../src/assets/fonts/Jost-Regular.ttf"; sourceTree = "<group>"; };
-		3B4392A12AC88292D35C810B /* Pods-SweetIdeas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetIdeas.debug.xcconfig"; path = "Target Support Files/Pods-SweetIdeas/Pods-SweetIdeas.debug.xcconfig"; sourceTree = "<group>"; };
+		3B4392A12AC88292D35C810B /* Pods-SatiSvveetIdeas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SatiSvveetIdeas.debug.xcconfig"; path = "Target Support Files/Pods-SatiSvveetIdeas/Pods-SatiSvveetIdeas.debug.xcconfig"; sourceTree = "<group>"; };
 		434B67CD9FC34F159FD07B10 /* Jost-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-Black.ttf"; path = "../src/assets/fonts/Jost-Black.ttf"; sourceTree = "<group>"; };
+		4725E9D0B71E40638FFA887E /* Colors.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = SatiSvveetIdeas/Colors.xcassets; sourceTree = "<group>"; };
 		49E8055A5E374705866A0C77 /* Jost-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-ExtraLightItalic.ttf"; path = "../src/assets/fonts/Jost-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		4CD0710C88504763872C2A5E /* Jost-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-MediumItalic.ttf"; path = "../src/assets/fonts/Jost-MediumItalic.ttf"; sourceTree = "<group>"; };
 		4D4C44D6EF6F49A5A3780A49 /* Jost-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-BoldItalic.ttf"; path = "../src/assets/fonts/Jost-BoldItalic.ttf"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-SweetIdeas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetIdeas.release.xcconfig"; path = "Target Support Files/Pods-SweetIdeas/Pods-SweetIdeas.release.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-SweetIdeas.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SweetIdeas.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5709B34CF0A7D63546082F79 /* Pods-SatiSvveetIdeas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SatiSvveetIdeas.release.xcconfig"; path = "Target Support Files/Pods-SatiSvveetIdeas/Pods-SatiSvveetIdeas.release.xcconfig"; sourceTree = "<group>"; };
+		5DCACB8F33CDC322A6C60F78 /* libPods-SatiSvveetIdeas.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SatiSvveetIdeas.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		642634BF4D004A279AA0D23F /* Jost-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-ExtraBold.ttf"; path = "../src/assets/fonts/Jost-ExtraBold.ttf"; sourceTree = "<group>"; };
 		6FEF3569A98C42168B27B82E /* index.ts */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = index.ts; path = ../src/assets/fonts/index.ts; sourceTree = "<group>"; };
-		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SweetIdeas/AppDelegate.swift; sourceTree = "<group>"; };
+		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SatiSvveetIdeas/AppDelegate.swift; sourceTree = "<group>"; };
 		7FB0E70245474D1E8752A89B /* Jost-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-BlackItalic.ttf"; path = "../src/assets/fonts/Jost-BlackItalic.ttf"; sourceTree = "<group>"; };
 		7FD4DA8C273640B386E934DB /* Jost-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-ThinItalic.ttf"; path = "../src/assets/fonts/Jost-ThinItalic.ttf"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SweetIdeas/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SatiSvveetIdeas/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		870B1083CF1B43C2A8D91781 /* Jost-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-SemiBold.ttf"; path = "../src/assets/fonts/Jost-SemiBold.ttf"; sourceTree = "<group>"; };
 		A344DCEC093A4B6CB1F239E1 /* Jost-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-Bold.ttf"; path = "../src/assets/fonts/Jost-Bold.ttf"; sourceTree = "<group>"; };
 		A4CCC894645D41A8AFBC2199 /* Jost-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-Thin.ttf"; path = "../src/assets/fonts/Jost-Thin.ttf"; sourceTree = "<group>"; };
@@ -64,9 +65,8 @@
 		ECB75A34E84E4678B5EBDE0D /* Jost-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-Medium.ttf"; path = "../src/assets/fonts/Jost-Medium.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EEB49C9CDA8C4B76B1A63277 /* Jost-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-Light.ttf"; path = "../src/assets/fonts/Jost-Light.ttf"; sourceTree = "<group>"; };
+		F5B7A7FED91A4AEC9286F189 /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = SatiSvveetIdeas/BootSplash.storyboard; sourceTree = "<group>"; };
 		F991473C2DEF4767B0E0C540 /* Jost-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Jost-ExtraBoldItalic.ttf"; path = "../src/assets/fonts/Jost-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		F5B7A7FED91A4AEC9286F189 /* BootSplash.storyboard */ = {isa = PBXFileReference; name = "BootSplash.storyboard"; path = "SweetIdeas/BootSplash.storyboard"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		4725E9D0B71E40638FFA887E /* Colors.xcassets */ = {isa = PBXFileReference; name = "Colors.xcassets"; path = "SweetIdeas/Colors.xcassets"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = folder.assetcatalog; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,14 +74,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-SweetIdeas.a in Frameworks */,
+				0C80B921A6F3F58F76C31292 /* libPods-SatiSvveetIdeas.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13B07FAE1A68108700A75B9A /* SweetIdeas */ = {
+		13B07FAE1A68108700A75B9A /* SatiSvveetIdeas */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -92,14 +92,14 @@
 				F5B7A7FED91A4AEC9286F189 /* BootSplash.storyboard */,
 				4725E9D0B71E40638FFA887E /* Colors.xcassets */,
 			);
-			name = SweetIdeas;
+			name = SatiSvveetIdeas;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-SweetIdeas.a */,
+				5DCACB8F33CDC322A6C60F78 /* libPods-SatiSvveetIdeas.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -141,7 +141,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* SweetIdeas */,
+				13B07FAE1A68108700A75B9A /* SatiSvveetIdeas */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
@@ -156,7 +156,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* SweetIdeas.app */,
+				13B07F961A680F5B00A75B9A /* SatiSvveetIdeas.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,8 +164,8 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-SweetIdeas.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-SweetIdeas.release.xcconfig */,
+				3B4392A12AC88292D35C810B /* Pods-SatiSvveetIdeas.debug.xcconfig */,
+				5709B34CF0A7D63546082F79 /* Pods-SatiSvveetIdeas.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -173,9 +173,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* SweetIdeas */ = {
+		13B07F861A680F5B00A75B9A /* SatiSvveetIdeas */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SweetIdeas" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SatiSvveetIdeas" */;
 			buildPhases = (
 				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -189,9 +189,9 @@
 			);
 			dependencies = (
 			);
-			name = SweetIdeas;
-			productName = SweetIdeas;
-			productReference = 13B07F961A680F5B00A75B9A /* SweetIdeas.app */;
+			name = SatiSvveetIdeas;
+			productName = SatiSvveetIdeas;
+			productReference = 13B07F961A680F5B00A75B9A /* SatiSvveetIdeas.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -207,7 +207,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SweetIdeas" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SatiSvveetIdeas" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -220,7 +220,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* SweetIdeas */,
+				13B07F861A680F5B00A75B9A /* SatiSvveetIdeas */,
 			);
 		};
 /* End PBXProject section */
@@ -282,15 +282,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SweetIdeas/Pods-SweetIdeas-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SatiSvveetIdeas/Pods-SatiSvveetIdeas-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SweetIdeas/Pods-SweetIdeas-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SatiSvveetIdeas/Pods-SatiSvveetIdeas-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SweetIdeas/Pods-SweetIdeas-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SatiSvveetIdeas/Pods-SatiSvveetIdeas-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
@@ -308,7 +308,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SweetIdeas-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SatiSvveetIdeas-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -321,15 +321,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SweetIdeas/Pods-SweetIdeas-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SatiSvveetIdeas/Pods-SatiSvveetIdeas-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SweetIdeas/Pods-SweetIdeas-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SatiSvveetIdeas/Pods-SatiSvveetIdeas-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SweetIdeas/Pods-SweetIdeas-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SatiSvveetIdeas/Pods-SatiSvveetIdeas-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -348,13 +348,14 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-SweetIdeas.debug.xcconfig */;
+			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-SatiSvveetIdeas.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = SweetIdeas/Info.plist;
+				INFOPLIST_FILE = SatiSvveetIdeas/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Sati: Svveet Ideas";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -366,8 +367,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = SweetIdeas;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sati.svveetideas;
+				PRODUCT_NAME = SatiSvveetIdeas;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -380,12 +381,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-SweetIdeas.release.xcconfig */;
+			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-SatiSvveetIdeas.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = SweetIdeas/Info.plist;
+				INFOPLIST_FILE = SatiSvveetIdeas/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Sati: Svveet Ideas";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -397,8 +399,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = SweetIdeas;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sati.svveetideas;
+				PRODUCT_NAME = SatiSvveetIdeas;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -557,7 +559,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SweetIdeas" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SatiSvveetIdeas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -566,7 +568,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SweetIdeas" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SatiSvveetIdeas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

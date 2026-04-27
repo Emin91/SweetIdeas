@@ -1,4 +1,4 @@
-package com.sweetideas
+package com.sati.svveetideas
 
 import android.app.Application
 import com.facebook.react.PackageList
